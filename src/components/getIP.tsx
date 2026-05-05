@@ -1,11 +1,18 @@
+export interface getIpProps {
+  "ip": string,
+  "city": string,
+  "region": string,
+  "country": string,
+  "loc": string,
+  "org": string,
+  "postal": string,
+  "timezone": string,
+  "readme": string,
+}
+
 export async function getIP() {
     const res = await fetch('https://ipinfo.io/json')
-      .then(res => res.json())
-      .then(data => {
-        console.log(`IP: ${data.ip}, Location: ${data.city}, ${data.region}, Coordinates: ${data.loc}, Org: ${data.org}`);
-        /* console.log(data) */
-      });
-    const data = res.json()
+    const data: getIpProps = await res.json()
     console.log(data)
     return data
   }
