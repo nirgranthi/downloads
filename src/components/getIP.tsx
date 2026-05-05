@@ -13,6 +13,5 @@ export interface getIpProps {
 export async function getIP() {
     const res = await fetch('https://ipinfo.io/json')
     const data: getIpProps = await res.json()
-    console.log(data)
     return data
   }
