@@ -54,18 +54,27 @@ export default function App() {
         </div>
       </header>
 
-      <section className="p-6 border-b border-black bg-black text-white flex justify-between items-center overflow-hidden shrink-0">
-        <div className="whitespace-nowrap animate-marquee flex gap-20">
-          {[...Array(5)].map((_, i) => (
-            <span key={i} className="text-xs uppercase tracking-[0.4em] font-medium">
-              "Logic is the beginning of wisdom, not the end." — Some dead guy. &nbsp;&nbsp; ● &nbsp;&nbsp; DO NOT CLICK THE BUTTONS WITHOUT SUPERVISION.
-            </span>
-          ))}
+      <section className="p-6 border-b border-black bg-black text-white flex overflow-hidden shrink-0">
+        <div className="whitespace-nowrap animate-marquee flex">
+          <div className="flex gap-20 pr-20 shrink-0">
+            {[...Array(5)].map((_, i) => (
+              <span key={i} className="text-xs uppercase tracking-[0.4em] font-medium">
+                "Logic is the beginning of wisdom, not the end." — Some dead guy. &nbsp;&nbsp; ● &nbsp;&nbsp; DO NOT CLICK THE BUTTONS WITHOUT SUPERVISION.
+              </span>
+            ))}
+          </div>
+          <div className="flex gap-20 pr-20 shrink-0" aria-hidden="true">
+            {[...Array(5)].map((_, i) => (
+              <span key={i} className="text-xs uppercase tracking-[0.4em] font-medium">
+                "Logic is the beginning of wisdom, not the end." — Some dead guy. &nbsp;&nbsp; ● &nbsp;&nbsp; DO NOT CLICK THE BUTTONS WITHOUT SUPERVISION.
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* --- THE FIX: FLEX-ROW + FLEX-NOWRAP --- */}
-      <main className="flex flex-row flex-nowrap overflow-x-auto snap-x snap-mandatory scrollbar-hide border-b border-black flex-grow">
+      <main className="flex flex-row flex-nowrap overflow-x-auto snap-x snap-mandatory custom-scrollbar border-b border-black flex-grow">
         {projects.map((p, index) => (
           <div 
             key={p.id} 
@@ -105,7 +114,7 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="p-6 flex justify-between font-mono text-[4px] uppercase opacity-50 shrink-0">
+      <footer className="p-6 flex justify-between font-mono text-[10px] uppercase opacity-50 shrink-0">
         <span>Built with Intensive thinking</span>
         <span>© 2026 NIRGRANTHI.ORG</span>
       </footer>

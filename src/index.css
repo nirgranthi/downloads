@@ -111,3 +111,51 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* --- Premium Marquee & Custom Scrollbar Styles --- */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom horizontal scrollbar */
+.custom-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #121212 #f4f4f4;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f4f4f4;
+  border-top: 1px solid #121212;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #121212;
+  border: 3px solid #f4f4f4;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #facc15; /* Bright yellow hover to match Neo-Brutalist elements */
+}
+
