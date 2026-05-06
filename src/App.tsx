@@ -58,27 +58,18 @@ export default function App() {
         <div className="whitespace-nowrap animate-marquee flex">
           <div className="flex gap-20 pr-20 shrink-0">
             {[...Array(5)].map((_, i) => (
-              <span key={i} className="text-xs uppercase tracking-[0.4em] font-medium">
-                "Logic is the beginning of wisdom, not the end." — Some dead guy. &nbsp;&nbsp; ● &nbsp;&nbsp; DO NOT CLICK THE BUTTONS WITHOUT SUPERVISION.
-              </span>
-            ))}
-          </div>
-          <div className="flex gap-20 pr-20 shrink-0" aria-hidden="true">
-            {[...Array(5)].map((_, i) => (
-              <span key={i} className="text-xs uppercase tracking-[0.4em] font-medium">
-                "Logic is the beginning of wisdom, not the end." — Some dead guy. &nbsp;&nbsp; ● &nbsp;&nbsp; DO NOT CLICK THE BUTTONS WITHOUT SUPERVISION.
-              </span>
+              <span key={i} className="text-xs uppercase tracking-[0.001em] font-medium">
+                "Logic is the beginning of wisdom, not the end." — Some dead guy. &nbsp;&nbsp; ● &nbsp;&nbsp; DO NOT CLICK THE BUTTONS WITHOUT SUPERVISION. CLICKING THIS BUTTON INITIATES A HIGH-BANDWIDTH PACKET TRANSFER PROTOCOL. PLEASE REMAIN STATIONARY.              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- THE FIX: FLEX-ROW + FLEX-NOWRAP --- */}
-      <main className="flex flex-row flex-nowrap overflow-x-auto snap-x snap-mandatory custom-scrollbar border-b border-black flex-grow">
+      <main className="flex flex-row flex-nowrap overflow-x-auto snap-x snap-mandatory custom-scrollbar border-b border-black grow">
         {projects.map((p, index) => (
-          <div 
-            key={p.id} 
-            className="flex-none w-[85vw] md:w-[450px] snap-start border-r border-black p-8 group hover:bg-white transition-all duration-500 flex flex-col justify-between"
+          <div
+            key={p.id}
+            className="flex-none w-[85vw] md:w-112.5 snap-start border-r border-black p-8 group hover:bg-white transition-all duration-500 flex flex-col justify-between"
           >
             <div>
               <div className="flex justify-between items-start mb-20">
@@ -107,7 +98,7 @@ export default function App() {
           </div>
         ))}
 
-        <div className="flex-none w-[85vw] md:w-[600px] snap-start border-r border-black p-12 flex items-center justify-center bg-gray-200">
+        <div className="flex-none w-[85vw] md:w-150 snap-start border-r border-black p-12 flex items-center justify-center bg-gray-200">
           <p className="font-mono text-[10px] uppercase tracking-[1em] opacity-30 text-center">
             This project has been released in the future but since you're in the present, you can't see it.
           </p>
