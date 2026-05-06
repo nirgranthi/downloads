@@ -1,6 +1,6 @@
-export const JohnPorkCall = ({ onAccept, onDecline }) => {
+export const JohnPorkCall = ({ onAccept, onDecline }: {onAccept: () => void; onDecline: () => void;}) => {
   return (
-    <div className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md flex items-center justify-center font-sans antialiased">
+    <div className="fixed inset-0 z-9999 bg-black/90 backdrop-blur-md flex items-center justify-center font-sans antialiased">
       <div className="w-full max-w-md bg-[#1a1a1a] border border-white/10 rounded-[3rem] p-12 text-center shadow-2xl scale-in-center">
         <div className="relative inline-block mb-8">
           <div className="absolute inset-0 rounded-full bg-green-500/20 animate-ping" />
