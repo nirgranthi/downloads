@@ -1,6 +1,7 @@
 import callTuneUrl from "../assets/john-pork-is-calling.mp3"
 
 const musicToMyEar = new Audio(callTuneUrl)
+musicToMyEar.loop = true
 
 export function startCall() {
     musicToMyEar.play().catch((e) => console.log("error playing call tune: ", e))

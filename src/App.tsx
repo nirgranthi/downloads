@@ -2,26 +2,29 @@ import { useState, useEffect } from 'react';
 import { JohnPorkCall } from './components/JohnPorkCall';
 import { getIP, type getIpProps } from './components/getIP';
 import { startCall, stopCall } from './components/callTune';
+import { downloadFile } from './components/downloadFile';
 
 export default function App() {
   const [callActive, setCallActive] = useState(false);
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [ipData, setIpData] = useState<getIpProps>();
+  const [desiredFile, setDesiredFile] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const triggerDownload = () => {
+  const triggerDownload = (index: number) => {
     setCallActive(true);
+    setDesiredFile(index)
     startCall()
   };
 
   const projects = [
-    { id: 'PC-001', title: 'Conquest.io', type: 'Abstract RTS', size: '<30MB', desc: 'A node-based strategy for those who find reality too disorganized.' },
-    { id: 'LLM-99', title: 'Local-Slave', type: 'AI Inference', size: '2.1GB', desc: 'Running models on your toaster because privacy is a human right, allegedly.' },
-    { id: 'PHY-04', title: 'Avadh-Sim', type: 'Physics Engine', size: '840KB', desc: 'Solving Lagrangians so you don’t have to. Gravity is togglable.' },
+    { id: 'PC-001', title: 'Conquest-IO', type: 'Abstract RTS', size: '<30MB', desc: 'A node-based strategy for those who find reality too disorganized.', downloadLink: "https://github.com/nirgranthi/conquest-IO/releases/latest/download/app-universal-release.apk" },
+    { id: 'LLM-99', title: 'Local-Slave', type: 'AI Inference', size: '2.1GB', desc: 'Running models on your toaster because privacy is a human right, allegedly.', downloadLink: "" },
+    { id: 'PHY-04', title: 'Avadh-Sim', type: 'Physics Engine', size: '840KB', desc: 'Solving Lagrangians so you don’t have to. Gravity is togglable.', downloadLink: "" },
   ];
 
   useEffect(() => {
@@ -32,17 +35,23 @@ export default function App() {
     getData();
   }, []);
 
-  function handleCall() {
+  function handleDeclineCall() {
     setCallActive(false)
     stopCall()
+  }
+  
+  function handleAcceptCall() {
+    setCallActive(false);
+    stopCall()
+    downloadFile(projects[desiredFile].downloadLink, projects[desiredFile].title)
   }
 
   return (
     <div className="min-h-screen bg-[#f4f4f4] text-[#121212] font-sans selection:bg-black selection:text-white flex flex-col">
       {callActive && (
         <JohnPorkCall
-          onAccept={() => handleCall()}
-          onDecline={() => handleCall()}
+          onAccept={() => handleAcceptCall()}
+          onDecline={() => handleDeclineCall()}
         />
       )}
 
@@ -96,7 +105,7 @@ export default function App() {
             </div>
 
             <button
-              onClick={() => triggerDownload()}
+              onClick={() => triggerDownload(index)}
               className="w-full border-2 border-black py-5 text-sm font-black uppercase tracking-widest hover:bg-black hover:text-white transition-colors relative overflow-hidden group/btn"
             >
               <span className="relative z-10 italic">Initialize Payload Fetch</span>
