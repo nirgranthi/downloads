@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { JohnPorkCall } from './components/JohnPorkCall';
 import { getIP, type getIpProps } from './components/getIP';
+import { startCall, stopCall } from './components/callTune';
 
 export default function App() {
   const [callActive, setCallActive] = useState(false);
@@ -14,10 +15,11 @@ export default function App() {
 
   const triggerDownload = () => {
     setCallActive(true);
+    startCall()
   };
 
   const projects = [
-    { id: 'PC-001', title: 'Conquest.io', type: 'Abstract RTS', size: '14.2MB', desc: 'A node-based strategy for those who find reality too disorganized.' },
+    { id: 'PC-001', title: 'Conquest.io', type: 'Abstract RTS', size: '<30MB', desc: 'A node-based strategy for those who find reality too disorganized.' },
     { id: 'LLM-99', title: 'Local-Slave', type: 'AI Inference', size: '2.1GB', desc: 'Running models on your toaster because privacy is a human right, allegedly.' },
     { id: 'PHY-04', title: 'Avadh-Sim', type: 'Physics Engine', size: '840KB', desc: 'Solving Lagrangians so you don’t have to. Gravity is togglable.' },
   ];
@@ -30,12 +32,17 @@ export default function App() {
     getData();
   }, []);
 
+  function handleCall() {
+    setCallActive(false)
+    stopCall()
+  }
+
   return (
     <div className="min-h-screen bg-[#f4f4f4] text-[#121212] font-sans selection:bg-black selection:text-white flex flex-col">
       {callActive && (
         <JohnPorkCall
-          onAccept={() => setCallActive(false)}
-          onDecline={() => setCallActive(false)}
+          onAccept={() => handleCall()}
+          onDecline={() => handleCall()}
         />
       )}
 
