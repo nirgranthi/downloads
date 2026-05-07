@@ -1,3 +1,5 @@
+import johnPork from "./../assets/johnPork.jpg"
+
 export const JohnPorkCall = ({ onAccept, onDecline }: {onAccept: () => void; onDecline: () => void;}) => {
   return (
     <div className="fixed inset-0 z-9999 bg-black/90 backdrop-blur-md flex items-center justify-center font-sans antialiased">
@@ -5,7 +7,7 @@ export const JohnPorkCall = ({ onAccept, onDecline }: {onAccept: () => void; onD
         <div className="relative inline-block mb-8">
           <div className="absolute inset-0 rounded-full bg-green-500/20 animate-ping" />
           <img 
-            src="https://api.dicebear.com/7.x/avataaars/svg?seed=pork" 
+            src={johnPork}
             alt="Caller" 
             className="w-32 h-32 rounded-full border-4 border-green-500 relative z-10 grayscale brightness-125"
           />
